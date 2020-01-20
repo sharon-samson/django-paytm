@@ -1,0 +1,9 @@
+.navbar-brand {
+    font-family: 'Charmonman', cursive;
+  }
+
+
+  .carousel-inner img {
+      width: 100%;
+      height: 100%;
+  }

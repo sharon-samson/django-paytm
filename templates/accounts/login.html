@@ -1,0 +1,56 @@
+{% extends 'accounts/base_accounts.html' %}
+
+{% block title %}Log in to Colour Plus{% endblock %}
+
+{% block content %}
+
+
+
+  <div class='row justify-content-center'>
+    <div class="col-lg-4 col-md-6 col-sm-8">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Log in</h3>
+          <form method="post" novalidate>
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}">
+            {% include 'includes/form.html' %}
+            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+          </form>
+        </div>
+        <div class="card-footer text-muted text-center">
+          New to Django Boards? <a href="{% url 'accounts:signup' %}">Sign up</a>
+        </div>
+      </div>
+      <div class="text-center py-2">
+        <small>
+          <a href="#" class="text-muted">Forgot your password?</a>
+        </small>
+      </div>
+    </div>
+    
+   
+    
+    <div class="col-lg-4 col-md-6 col-sm-8">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Log in</h3>
+          {% load socialaccount %}
+          <!-- <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
+          <a href="{% provider_login_url 'facebook' method='oauth2' %}">Facebook OAuth2</a>
+          <a href="{% provider_login_url 'instagram' method='oauth2' %}">Instagram OAuth2</a>
+          
+          </div>
+        </div>
+      </div>
+
+<div id="fb-root"></div>
+<!-- <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2&appId=334084447371892&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script> -->
+
+{% endblock %}
